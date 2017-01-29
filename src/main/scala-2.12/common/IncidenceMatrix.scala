@@ -1,11 +1,9 @@
 package common
 
-import scala.collection.immutable.BitSet
-
 trait IncidenceMatrix {
-  val words : Vector[String]
-  val documents : Vector[String]
-  val matrix : Vector[Vector[Boolean]]
+  val words : IndexedSeq[String]
+  val documents : IndexedSeq[String]
+  val matrix : IndexedSeq[IndexedSeq[Boolean]]
 }
 
 object IncidenceMatrix {
@@ -15,13 +13,13 @@ object IncidenceMatrix {
 
     val incidenceMatrix =
       allWords.map(word =>
-        allDocuments.map(doc => collectionRevertIndex.positionsByWord(word).positionsByDocument.contains(doc)).toVector
-      ).toVector
+        allDocuments.map(doc => collectionRevertIndex.positionsByWord(word).positionsByDocument.contains(doc)).toIndexedSeq
+      ).toIndexedSeq
 
     new IncidenceMatrix {
-      override val words: Vector[String] = allWords.toVector
-      override val documents: Vector[String] = allDocuments.toVector
-      override val matrix: Vector[Vector[Boolean]] = incidenceMatrix
+      override val words: IndexedSeq[String] = allWords.toIndexedSeq
+      override val documents: IndexedSeq[String] = allDocuments.toIndexedSeq
+      override val matrix: IndexedSeq[IndexedSeq[Boolean]] = incidenceMatrix
     }
   }
 }
