@@ -1,13 +1,13 @@
 package practice1
 
-import common.{BookCollection, IntegerFormatter, MyFileWriter, RevertIndex}
+import common.{BookCollection, IntegerFormatter, MyFileWriter, CoordinateRevertIndex}
 
 /**
   * @author alosha
   */
 object Practice1 extends App {
 
-      val reverseIndex = RevertIndex.fromCollection(BookCollection)
+      val reverseIndex = CoordinateRevertIndex.fromCollection(BookCollection)
 
       val result =
         s"""

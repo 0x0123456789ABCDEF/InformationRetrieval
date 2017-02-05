@@ -1,6 +1,6 @@
 package practice2
 
-import common.{BookCollection, RevertIndex}
+import common.{BookCollection, CoordinateRevertIndex}
 
 import scala.io.StdIn
 
@@ -9,7 +9,7 @@ import scala.io.StdIn
 
 
 object Practice2 extends App {
-   val reverseIndex = RevertIndex.fromCollection(BookCollection)
+   val reverseIndex = CoordinateRevertIndex.fromCollection(BookCollection)
 
    while(true) {
       print("Please type your query (you can use AND/OR): ")

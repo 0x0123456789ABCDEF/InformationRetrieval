@@ -7,7 +7,7 @@ trait IncidenceMatrix {
 }
 
 object IncidenceMatrix {
-  def fromReverseIndex(collectionRevertIndex: CollectionRevertIndex) : IncidenceMatrix = {
+  def fromReverseIndex(collectionRevertIndex: CollectionCoordinateRevertIndex) : IncidenceMatrix = {
     val allWords : Iterable[String] = collectionRevertIndex.positionsByWord.keys
     val allDocuments : Set[String] = collectionRevertIndex.positionsByWord.map(_._2.positionsByDocument.keySet).reduce(_ ++ _)
 
