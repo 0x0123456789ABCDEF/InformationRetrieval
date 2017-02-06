@@ -2,7 +2,7 @@ package common
 
 import scala.io.{Source, BufferedSource}
 
-abstract class Collection {
+abstract class DocumentCollection {
   def getPaths : Seq[String]
 
   def getSources : Seq[BufferedSource] =

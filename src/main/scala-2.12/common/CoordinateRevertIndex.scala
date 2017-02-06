@@ -1,8 +1,5 @@
 package common
 
-import scalaz._
-
-
 trait DocumentCoordinateRevertIndex {
   val positionsByWord : Map[String, Seq[Int]]
 }
@@ -16,7 +13,7 @@ trait CollectionWordPositions {
 }
 
 object CoordinateRevertIndex {
-  def fromCollection(collection: Collection): CollectionCoordinateRevertIndex =
+  def fromCollection(collection: DocumentCollection): CollectionCoordinateRevertIndex =
     new CollectionCoordinateRevertIndex {
       override val positionsByWord: Map[String, CollectionWordPositions] =
         collection.getPaths

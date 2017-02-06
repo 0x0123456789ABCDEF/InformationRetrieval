@@ -11,7 +11,7 @@ trait TwoWordRevertIndex {
   * Created by alosha on 2/5/17.
   */
 object TwoWordRevertIndex {
-  def fromCollection(collection: Collection): TwoWordRevertIndex = {
+  def fromCollection(collection: DocumentCollection): TwoWordRevertIndex = {
     var res = MMap.empty[String, MMap[String, MSet[String]]]
 
     for( (document, words) <- collection.getPaths.map(documentName => documentName -> fromDocument(documentName))) {
