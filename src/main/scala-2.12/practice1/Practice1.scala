@@ -11,7 +11,7 @@ object Practice1 extends App {
 
       val result =
         s"""
-           | Total character count: ${IntegerFormatter(BookCollection.getSources.map(_.iter.size.toLong).sum)}
+           | Total character count: ${IntegerFormatter(BookCollection.getPaths.map(BookCollection.getSource).map(_.iter.size.toLong).sum)}
            | Total words count: ${IntegerFormatter(reverseIndex.positionsByWord.map(_._2.positionsByDocument.size).sum)}
            | Unique words count: ${IntegerFormatter(reverseIndex.positionsByWord.size)}
          """.stripMargin

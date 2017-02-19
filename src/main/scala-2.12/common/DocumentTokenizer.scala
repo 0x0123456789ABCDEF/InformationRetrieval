@@ -1,10 +1,10 @@
 package common
 
-import scala.io.Source
+import scala.io.{BufferedSource, Source}
 
-object DocumentTokenizer extends (String => Seq[String]) {
-  override def apply(documentPath: String): Seq[String] =
-      Source.fromResource(documentPath).getLines().flatMap(line => {
+object DocumentTokenizer extends (BufferedSource => Seq[String]) {
+  override def apply(documentSource: BufferedSource): Seq[String] =
+      documentSource.getLines().flatMap(line => {
         val tokens = line.split("[^\\w]+")
         val nonEmptyTokens = tokens.filter(_.nonEmpty)
         val normalizedTokens = nonEmptyTokens.map(TokenNormalizer)

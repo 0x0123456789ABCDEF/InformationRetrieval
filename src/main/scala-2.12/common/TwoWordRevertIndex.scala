@@ -14,6 +14,9 @@ object TwoWordRevertIndex {
   def fromCollection(collection: DocumentCollection): TwoWordRevertIndex = {
     var res = MMap.empty[String, MMap[String, MSet[String]]]
 
+    def fromDocument(documentName: String): Map[String, Set[String]] =
+        DocumentTokenizer(collection.getSource(documentName)).sliding(2).toSeq.groupBy(_.head).mapValues(_.map(_.tail.head).toSet)
+
     for( (document, words) <- collection.getPaths.map(documentName => documentName -> fromDocument(documentName))) {
       for( (firstWord, secondWords) <- words) {
         if(!res.contains(firstWord)) {
@@ -33,7 +36,4 @@ object TwoWordRevertIndex {
         res.mapValues(_.mapValues(_.toSet).toMap).toMap
     }
   }
-
-  private def fromDocument(documentName: String): Map[String, Set[String]] =
-        DocumentTokenizer(documentName).sliding(2).toSeq.groupBy(_.head).mapValues(_.map(_.tail.head).toSet)
 }
