@@ -2,7 +2,7 @@ package common
 
 import scala.io.{BufferedSource, Source}
 
-object DocumentTokenizer extends (BufferedSource => Seq[String]) {
+object BufferedSourceTokenizer extends (BufferedSource => Seq[String]) {
   override def apply(documentSource: BufferedSource): Seq[String] =
       documentSource.getLines().flatMap(line => {
         val tokens = line.split("[^\\w]+")
