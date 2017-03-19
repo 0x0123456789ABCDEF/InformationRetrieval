@@ -46,7 +46,7 @@ object Practice7 extends App {
 
   while(true) {
     val query : String = StdIn.readLine()
-    val terms : Seq[Term] = query.split("[\w+]").map(_.toLowerCase).map(Term)
+    val terms : Seq[Term] = query.split("[\\w+]").map(_.toLowerCase).map(Term)
     val result : Seq[(DocumentName, DocumentPriority)] = index.getBestDocumentsByTerms(terms, numberOfDocuments = 10)
     result.foreach {
       case (DocumentName(docName), DocumentPriority(docPriority)) =>
