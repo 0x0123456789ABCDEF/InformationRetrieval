@@ -24,7 +24,7 @@ object BlockedSortBasedIndexing {
 
     val parts : Seq[String] = partCounts.flatMap(x => (1 to x._2).map(i => s"${x._1}.partial$i"))
 
-    parts.reduceLeft {
+    parts.reduceLeft[String] {
       case (filename1, filename2) =>
         mergePartials(filename1, filename2)
         filename1

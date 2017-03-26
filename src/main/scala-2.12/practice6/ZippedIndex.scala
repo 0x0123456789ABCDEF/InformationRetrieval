@@ -24,9 +24,9 @@ class ZippedIndex {
       val innerMap : mutable.Map[DocId, DocPositions] = mutable.HashMap()
       wordPos.positionsByDocument.map({
         case (docName : String, docPositions : Seq[Int]) =>
-          val docId = zippedDocNames.getId(docId)
+          val docId = zippedDocNames.getId(docName)
           innerMap.put(docId, docPositions)
       })
-      wordPositions.put(wordId, Map(innerMap : _*))
+      wordPositions.put(wordId, Map(innerMap.toSeq : _*))
   }
 }
