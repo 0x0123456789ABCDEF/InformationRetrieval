@@ -60,7 +60,7 @@ trait CollectionWordPositions {
 object CoordinateRevertIndex {
   def fromCollection(collection: DocumentCollection): CollectionCoordinateRevertIndex = {
     def fromDocument(documentName: String): DocumentCoordinateRevertIndex =
-      fromTokens(BufferedSourceTokenizer(collection.getSource(documentName)))
+      fromTokens(SourceTokenizer(collection.getSource(documentName)))
     new CollectionCoordinateRevertIndex {
       override val positionsByWord: Map[String, CollectionWordPositions] =
         collection.getPaths

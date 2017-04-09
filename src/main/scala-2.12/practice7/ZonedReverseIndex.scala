@@ -1,7 +1,7 @@
 package practice7
 
 import Aliases._
-import common.BufferedSourceTokenizer
+import common.SourceTokenizer
 
 /**
   * Created by alosha on 3/19/17.
@@ -57,7 +57,7 @@ object ZonedReverseIndex {
       document: ZonedDocument =>
         document.zoneSources.flatMap {
           case (zoneName, bufSource) =>
-            val terms: Seq[Term] = BufferedSourceTokenizer(bufSource).map(Term)
+            val terms: Seq[Term] = SourceTokenizer(bufSource).map(Term)
             terms.map(zoneName -> _)
         } map {
           case (zoneName, term) =>

@@ -4,7 +4,7 @@ import practice8.Aliases.{DocumentName, DocumentStaticValue}
 
 import scala.io.BufferedSource
 import Aliases._
-import common.BufferedSourceTokenizer
+import common.SourceTokenizer
 
 /**
   * Created by alosha on 3/26/17.
@@ -14,7 +14,7 @@ trait StaticRankedDocument extends Ordered[StaticRankedDocument] {
     val staticRank : DocumentStaticValue
     val source : BufferedSource
 
-    lazy val termSet : Set[Term] = Set(BufferedSourceTokenizer(source).map(Term) : _*)
+    lazy val termSet : Set[Term] = Set(SourceTokenizer(source).map(Term) : _*)
 
     lazy val vector : Vector[Int] = {
       val termIds : Set[Int] = termSet.map(term => TermCollection.getId(term.word))

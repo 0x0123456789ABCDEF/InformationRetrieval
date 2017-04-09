@@ -15,7 +15,7 @@ object TwoWordRevertIndex {
     var res = MMap.empty[String, MMap[String, MSet[String]]]
 
     def fromDocument(documentName: String): Map[String, Set[String]] =
-        BufferedSourceTokenizer(collection.getSource(documentName)).sliding(2).toSeq.groupBy(_.head).mapValues(_.map(_.tail.head).toSet)
+        SourceTokenizer(collection.getSource(documentName)).sliding(2).toSeq.groupBy(_.head).mapValues(_.map(_.tail.head).toSet)
 
     for( (document, words) <- collection.getPaths.map(documentName => documentName -> fromDocument(documentName))) {
       for( (firstWord, secondWords) <- words) {

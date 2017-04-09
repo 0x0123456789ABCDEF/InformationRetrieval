@@ -1,7 +1,6 @@
 package practice7
 
-import scala.io.BufferedSource
-
+import scala.io.{BufferedSource, Source}
 import Aliases._
 
 /**
@@ -9,5 +8,5 @@ import Aliases._
   */
 trait ZonedDocument {
   val name : DocumentName
-  val zoneSources : Map[ZoneName, BufferedSource]
+  val zoneSources : Map[ZoneName, Source]
 }
